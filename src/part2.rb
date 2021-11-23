@@ -101,6 +101,16 @@ define :rundata2time do |from, to|
 end
 
 
+8.times do
+  sample :drum_cymbal_soft
+  sleep 0.5
+  sample :drum_cymbal_soft
+  sleep 0.3
+  sample :drum_cymbal_soft
+  sleep 0.2
+end
+
+
 # ========================= 2. VERSE
 
 
@@ -123,15 +133,13 @@ in_thread do
   end
 end
 
-
-
 set :count_m, 0.0
 set :count_w, 0.0
 
 in_thread do
-  sleep 12
+  sleep 8
   in_thread do
-    54.times do
+    62.times do
       sample cello2, "C1_v2_RR2", amp: 3
       sample cello2, "spic_B1_v2_RR2", amp: 3
       sleep 0.5
@@ -140,18 +148,18 @@ in_thread do
 end
 
 in_thread do
-  sleep 16
-  
+  sleep 12
   use_synth :prophet
   in_thread do
-    6.times do
-      play_pattern_timed ['C4', 'Eb4', 'G4', 'D4', 'B3', 'B4', 'D4', 'F5'], 0.5, release: 1, amp: 1
+    for x in 0..6
+      play_pattern_timed ['C4', 'Eb4', 'G4', 'D4', 'B3', 'B4', 'D4', 'F5'], 0.5, release: 1, amp: (x * 0.5 + 0.5)
     end
   end
+  
 end
 
 in_thread do
-  sleep 28
+  sleep 24
   for x in 0..5
     
     sample trumpets, "4_C", attack: 0, start: 0, release: 0.1, finish: 0.05, amp: 2
@@ -178,8 +186,13 @@ in_thread do
   end
 end
 
+set :ampmultiplyer, 4
 rundata2time 20, 60
 set :endofsong, 1
+
+
+
+
 
 
 

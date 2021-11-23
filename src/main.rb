@@ -14,6 +14,7 @@ data = ['m', 'm', 'm', 'm', 'w', 'm', 'm', 'w', 'm', 'm',
         'w', 'm', 'w', 'm', 'm', 'm', 'm', 'm', 'w', 'w',
         'w', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'w',
         'm', 'm', 'w', 'm', 'm', 'w', 'm', 'm']
+
 set :count_factor, 20
 set :count_m, 0.0
 set :count_w, 0.0
@@ -33,26 +34,32 @@ in_thread do
   end
 end
 
-#live_loop :drums do
 in_thread do
+  #11.times do
+  x = 0
   11.times do
-    
-    sample :drum_cymbal_open
-    3.times do
+    if x == 8
+      sleep 8
+    else
+      sample :drum_cymbal_open
+      3.times do
+        sample :drum_heavy_kick
+        sleep 1
+        sample :drum_snare_hard
+        sleep 1
+      end
+      
       sample :drum_heavy_kick
-      sleep 1
+      sleep 0.8
       sample :drum_snare_hard
-      sleep 1
+      sleep 0.2
+      sample :drum_snare_hard
+      sleep 0.5
+      sample :drum_snare_hard
+      sleep 0.5
     end
     
-    sample :drum_heavy_kick
-    sleep 0.8
-    sample :drum_snare_hard
-    sleep 0.2
-    sample :drum_snare_hard
-    sleep 0.5
-    sample :drum_snare_hard
-    sleep 0.5
+    x = x + 1
   end
   
 end
@@ -200,7 +207,7 @@ define :trumpet do
     sleep 0.25
     
   end
-    
+  
   # First
   cellodiss
   trumpet_up
@@ -210,9 +217,9 @@ define :trumpet do
   sample trumpets, "4_Bb", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
   
   sleep 2
-  sample trumpets, "5_Eb", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
-  sample trumpets, "5_C", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
-  sample trumpets, "4_G", attack: 0, start: 0, release: 2.5, finish: 0.23, amp: 4
+  sample trumpets, "5_Eb", attack: 0, start: 0, release: 2.5, finish: 0.33, amp: 4
+  sample trumpets, "5_C", attack: 0, start: 0, release: 2.5, finish: 0.33, amp: 4
+  sample trumpets, "4_G", attack: 0, start: 0, release: 2.5, finish: 0.25, amp: 4
   sleep 2
   
   # Second
@@ -252,7 +259,7 @@ trumpet
 
 set :bassamp, 3
 
-sleep 18
+sleep 10
 
 
 8.times do
@@ -287,15 +294,13 @@ in_thread do
   end
 end
 
-
-
 set :count_m, 0.0
 set :count_w, 0.0
 
 in_thread do
-  sleep 12
+  sleep 8
   in_thread do
-    54.times do
+    64.times do
       sample cello2, "C1_v2_RR2", amp: 3
       sample cello2, "spic_B1_v2_RR2", amp: 3
       sleep 0.5
@@ -304,19 +309,19 @@ in_thread do
 end
 
 in_thread do
-  sleep 16
-  
+  sleep 12
   use_synth :prophet
   in_thread do
-    6.times do
-      play_pattern_timed ['C4', 'Eb4', 'G4', 'D4', 'B3', 'B4', 'D4', 'F5'], 0.5, release: 1, amp: 1
+    for x in 0..6
+      play_pattern_timed ['C4', 'Eb4', 'G4', 'D4', 'B3', 'B4', 'D4', 'F5'], 0.5, release: 1, amp: (x * 0.5 + 0.5)
     end
   end
+  
 end
 
 in_thread do
-  sleep 28
-  for x in 0..5
+  sleep 24
+  for x in 0..6
     
     sample trumpets, "4_C", attack: 0, start: 0, release: 0.1, finish: 0.05, amp: 2
     sample trumpets, "4_Eb", attack: 0, start: 0, release: 0.1, finish: 0.1, amp: 2
@@ -342,13 +347,6 @@ in_thread do
   end
 end
 
-set :ampmultiplyer, 3
+set :ampmultiplyer, 4
 rundata2time 20, 60
 set :endofsong, 1
-
-
-
-
-
-
-
