@@ -8,12 +8,12 @@ cellotrem = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonof
 violintrem = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samplesext/Virtual-Playing-Orchestra3/libs/NoBudgetOrch2/Violin/ViolinSect/Tremulo'
 cello2 = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samplesext/Virtual-Playing-Orchestra3/libs/VSCO2-CE/Strings/Cello Section/spic'
 
-data = ['m', 'm', 'm', 'm', 'w', 'm', 'm', 'w', 'm', 'm', 
-'m', 'm', 'm', 'w', 'm', 'm', 'm', 'm', 'm', 'm', 
-'m', 'm', 'w', 'w', 'w', 'm', 'm', 'm', 'm', 'w', 
-'w', 'm', 'w', 'm', 'm', 'm', 'm', 'm', 'w', 'w', 
-'w', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'w', 
-'m', 'm', 'w', 'm', 'm', 'w', 'm', 'm']
+data = ['m', 'm', 'm', 'm', 'w', 'm', 'm', 'w', 'm', 'm',
+        'm', 'm', 'm', 'w', 'm', 'm', 'm', 'm', 'm', 'm',
+        'm', 'm', 'w', 'w', 'w', 'm', 'm', 'm', 'm', 'w',
+        'w', 'm', 'w', 'm', 'm', 'm', 'm', 'm', 'w', 'w',
+        'w', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'm', 'w',
+        'm', 'm', 'w', 'm', 'm', 'w', 'm', 'm']
 set :count_factor, 20
 set :count_m, 0.0
 set :count_w, 0.0
@@ -21,7 +21,7 @@ set :globalamp, 1
 set :bassamp, 1
 set :bpm, 100
 set :endofsong, 0
-
+set :ampmultiplyer, 0
 
 use_bpm get[:bpm]
 
@@ -87,7 +87,7 @@ live_loop :bass do
   sleep 0.5
   play :cs2, amp: amp
   sleep 0.5
-
+  
   stop if get[:endofsong] == 1
 end
 
@@ -99,16 +99,16 @@ in_thread do
     # Men
     if data[x] == 'm'
       rate_m = 1 + get[:count_m] / get[:count_factor]
-      sample sample_man, rate: rate_m, amp: 1 + get[:count_m] / 4
+      sample sample_man, rate: rate_m, amp: 1 + get[:count_m] / 4 + get[:ampmultiplyer]
       set :count_m, get[:count_m] + 1
       
-    # Women
+      # Women
     elsif data[x] == 'w'
       rate_w = 1 + get[:count_w] / get[:count_factor]
-      sample sample_woman, rate: rate_w, amp: 1 + get[:count_m] / 4
+      sample sample_woman, rate: rate_w, amp: 1 + get[:count_m] / 4 + get[:ampmultiplyer]
       set :count_w, get[:count_w] + 1
-
-    end    
+      
+    end
   end
 end
 
@@ -200,8 +200,7 @@ define :trumpet do
     sleep 0.25
     
   end
-  
-  
+    
   # First
   cellodiss
   trumpet_up
@@ -209,12 +208,11 @@ define :trumpet do
   sample trumpets, "5_G", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
   sample trumpets, "3_G", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
   sample trumpets, "4_Bb", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
-  #sample cellotrem, "2_C_t", release: 3, amp: 10
-  #sample violintrem, "5_G", release: 3, amp: 8
+  
   sleep 2
   sample trumpets, "5_Eb", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
-  sample trumpets, "5_C", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
-  sample trumpets, "4_G", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
+  sample trumpets, "5_C", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
+  sample trumpets, "4_G", attack: 0, start: 0, release: 2.5, finish: 0.23, amp: 4
   sleep 2
   
   # Second
@@ -223,15 +221,12 @@ define :trumpet do
   
   sample trumpets, "5_B", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
   sample trumpets, "4_G", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
-  #sample cellotrem, "2_C_t", release: 3, amp: 10
-  #sample violintrem, "5_G", release: 3, amp: 8
+  
   sleep 2
-  #sample trumpets, "5_C", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
-  #sample trumpets, "5_Eb", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
-  #sample trumpets, "5_G", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
+  
   sample trumpets, "5_C", rate: 2, amp: 4
-  sample trumpets, "4_G", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
-  sample trumpets, "4_E", attack: 0, start: 0, release: 2.5, finish: 0.4, amp: 4
+  sample trumpets, "4_G", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
+  sample trumpets, "4_C", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
   
 end
 
@@ -347,6 +342,7 @@ in_thread do
   end
 end
 
+set :ampmultiplyer, 3
 rundata2time 20, 60
 set :endofsong, 1
 
