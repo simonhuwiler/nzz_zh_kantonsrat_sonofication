@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="no" ?>
 <!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
-<project xmlns="http://audacity.sourceforge.net/xml/" projname="diesitzung2_data" version="1.3.0" audacityversion="2.4.2" sel0="0.0000000000" sel1="3.0194875620" vpos="32" h="0.0000000000" zoom="93.3933305596" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="diesitzung2_data" version="1.3.0" audacityversion="2.4.2" sel0="0.0634958094" sel1="0.0634958094" vpos="192" h="3.2794283498" zoom="468.6792440875" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
 	<tags>
 		<tag name="Software" value="Lavf58.12.100"/>
 	</tags>
@@ -90,7 +90,7 @@
 		<waveclip offset="0.00000000" colorindex="0">
 			<sequence maxsamples="262144" sampleformat="262159" numsamples="133160">
 				<waveblock start="0">
-					<simpleblockfile filename="eff1f357.au" len="133160" min="-1.0" max="0.999969" rms="0.030361"/>
+					<simpleblockfile filename="eff1f09d.au" len="133160" min="-1.0" max="0.999969" rms="0.030304"/>
 				</waveblock>
 			</sequence>
 			<envelope numpoints="0"/>
@@ -100,7 +100,7 @@
 		<waveclip offset="0.00000000" colorindex="0">
 			<sequence maxsamples="262144" sampleformat="262159" numsamples="133160">
 				<waveblock start="0">
-					<simpleblockfile filename="eff1fb6c.au" len="133160" min="-1.0" max="0.999969" rms="0.030361"/>
+					<simpleblockfile filename="eff1f38a.au" len="133160" min="-1.0" max="0.999969" rms="0.030304"/>
 				</waveblock>
 			</sequence>
 			<envelope numpoints="0"/>
