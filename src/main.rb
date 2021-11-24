@@ -1,12 +1,11 @@
-sample_man = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samples/man.wav'
-sample_woman = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samples/woman.wav'
-sample_sitzung_begruessung = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samples/sitzung_begruessung.wav'
-sample_sitzung_eroeffnet = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samples/sitzung_eroeffnet.wav'
-sample_sitzung_glocke = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samples/sitzung_glocke.wav'
-trumpets = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samplesext/Virtual-Playing-Orchestra3/libs/NoBudgetOrch2/Trumpet/TrumpetSect/Sustain/'
-cellotrem = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samplesext/Virtual-Playing-Orchestra3/libs/NoBudgetOrch2/Cello/CelloSect/Tremulo/'
-violintrem = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samplesext/Virtual-Playing-Orchestra3/libs/NoBudgetOrch2/Violin/ViolinSect/Tremulo'
-cello2 = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/samplesext/Virtual-Playing-Orchestra3/libs/VSCO2-CE/Strings/Cello Section/spic'
+root = '/Users/simon/Documents/projects/nzz_zh_kantonsrat_genderstudy_sonofication/'
+sample_man = root + 'samples/man.wav'
+sample_woman = root + 'samples/woman.wav'
+sample_sitzung_begruessung = root + 'samples/sitzung_begruessung.wav'
+sample_sitzung_glocke = root + 'samples/sitzung_glocke.wav'
+trumpets = root + 'samplesext/Virtual-Playing-Orchestra3/libs/NoBudgetOrch2/Trumpet/TrumpetSect/Sustain/'
+cellotrem = root + 'samplesext/Virtual-Playing-Orchestra3/libs/NoBudgetOrch2/Cello/CelloSect/Tremulo/'
+cello2 = root + 'samplesext/Virtual-Playing-Orchestra3/libs/VSCO2-CE/Strings/Cello Section/spic'
 
 data = ['m', 'm', 'm', 'm', 'w', 'm', 'm', 'w', 'm', 'm',
         'm', 'm', 'm', 'w', 'm', 'm', 'm', 'm', 'm', 'm',
@@ -231,9 +230,9 @@ define :trumpet do
   
   sleep 2
   
-  sample trumpets, "5_C", rate: 2, amp: 4
   sample trumpets, "4_G", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
   sample trumpets, "4_C", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
+  sample trumpets, "5_C", rate: 2, attack: 0, start: 0,  finish: 0.9, amp: 4
   
 end
 
@@ -321,7 +320,7 @@ end
 
 in_thread do
   sleep 24
-  for x in 0..6
+  6.times do
     
     sample trumpets, "4_C", attack: 0, start: 0, release: 0.1, finish: 0.05, amp: 2
     sample trumpets, "4_Eb", attack: 0, start: 0, release: 0.1, finish: 0.1, amp: 2
