@@ -105,13 +105,13 @@ in_thread do
     # Men
     if data[x] == 'm'
       rate_m = 1 + get[:count_m] / get[:count_factor]
-      sample sample_man, rate: rate_m, amp: 1 + get[:count_m] / 4 + get[:ampmultiplyer]
+      sample sample_man, rate: rate_m, amp: 1 + get[:count_m] / 2 + get[:ampmultiplyer]
       set :count_m, get[:count_m] + 1
       
       # Women
     elsif data[x] == 'w'
       rate_w = 1 + get[:count_w] / get[:count_factor]
-      sample sample_woman, rate: rate_w, amp: 1 + get[:count_m] / 4 + get[:ampmultiplyer]
+      sample sample_woman, rate: rate_w, amp: 1 + get[:count_m] / 2 + get[:ampmultiplyer]
       set :count_w, get[:count_w] + 1
       
     end
@@ -232,7 +232,7 @@ define :trumpet do
   
   sample trumpets, "4_G", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
   sample trumpets, "4_C", attack: 0, start: 0, release: 2.5, finish: 0.3, amp: 4
-  sample trumpets, "5_C", rate: 2, attack: 0, start: 0,  finish: 0.9, amp: 4
+  sample trumpets, "5_C", rate: 2, attack: 0, start: 0, finish: 0.9, amp: 4, sustain: 1, release: 0.5
   
 end
 
