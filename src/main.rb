@@ -105,13 +105,13 @@ in_thread do
     # Men
     if data[x] == 'm'
       rate_m = 1 + get[:count_m] / get[:count_factor]
-      sample sample_man, rate: rate_m, amp: 1 + get[:count_m] / 2 + get[:ampmultiplyer]
+      sample sample_man, rate: rate_m, amp: 1 + get[:count_m] / 2 + get[:ampmultiplyer], pan: 0.5
       set :count_m, get[:count_m] + 1
       
       # Women
     elsif data[x] == 'w'
       rate_w = 1 + get[:count_w] / get[:count_factor]
-      sample sample_woman, rate: rate_w, amp: 1 + get[:count_m] / 2 + get[:ampmultiplyer]
+      sample sample_woman, rate: rate_w, amp: 1 + get[:count_m] / 2 + get[:ampmultiplyer], pan: -0.5
       set :count_w, get[:count_w] + 1
       
     end
