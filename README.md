@@ -13,7 +13,7 @@ The President of the Cantonal Council (at that time) begins the meeting.
 The introduction ends with the striking of the bell.
 Now men and women step up to the lectern. Each time a man speaks, you will hear a voice say "man". When a woman steps up to the lectern, "woman" is heard. The individual voices become higher and louder the more often one gender steps up to the lectern.
 
-[![Play Sonofication](./zzMisc/play.png)](https://static.nzz.ch/mp3/So-klingt-der-Zuercher-Kantonsrat.mp3)
+[![Play Sonofication](./zzMisc/play.png)](https://youtu.be/RhDcTuwuAq8)
 
 
 ## Installation
